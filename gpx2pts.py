@@ -4,14 +4,11 @@
 # winsto99@gmail.com
 
 import string as s
-import sys
-import matplotlib.pyplot as plt
-import numpy as np
 
 def gpx2pts(fname):
     '''
     Given a filename for a gpx file, this function returns a list of
-    3d points from the kml file
+    points from the gpx file
     '''
     pts = []
     with open(fname, 'r') as f:
@@ -25,13 +22,19 @@ def gpx2pts(fname):
 
 
 # TESTER
+import sys
 if len(sys.argv)>1:
+    #Load modules
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    #Run the program
     fname_IN = sys.argv[1]
     print "Extracting points from "+fname_IN
     pts = np.array(gpx2pts(fname_IN))
     print "Done!"
 
-    # TEST BY PLOTTING
+    #Test by plotting
     x = pts[:,0]
     y = pts[:,1]
     fig = plt.figure()
