@@ -18,28 +18,26 @@ def gpx2pts(fname):
         while True: #while we're not yet at end of file
             l = f.readline()  #read a new line
             if not l: break  #if we've reached EOF, quit
-
-            # If this is the start of a coords BLOCK (don't include single pts)
-            if s.find(l,'<trkpt')!=-1: #if this is a trkpt line
+            if s.find(l,'<trkpt')!=-1: #but if this is a trkpt line,
                 p = l.split('\"'); #parse the line
                 pts.append([float(p[1]), float(p[3])])  #parse this line + save
-
     return pts 
 
 
 # TESTER
-fname_IN = sys.argv[1]
-print "Extracting points from "+fname_IN
-pts = np.array(gpx2pts(fname_IN))
-print "Done!"
+if len(sys.argv)>1:
+    fname_IN = sys.argv[1]
+    print "Extracting points from "+fname_IN
+    pts = np.array(gpx2pts(fname_IN))
+    print "Done!"
 
-# TEST BY PLOTTING
-x = pts[:,0]
-y = pts[:,1]
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(x, y)
-ax.set_aspect('equal')
-plt.title('A gpx path')
-plt.show()
+    # TEST BY PLOTTING
+    x = pts[:,0]
+    y = pts[:,1]
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x, y)
+    ax.set_aspect('equal')
+    plt.title('A gpx path')
+    plt.show()
 
