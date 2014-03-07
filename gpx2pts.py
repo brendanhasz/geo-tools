@@ -41,6 +41,6 @@ if len(sys.argv)>1:
     ax = fig.add_subplot(111)
     ax.plot(x, y)
     ax.set_aspect('equal')
-    plt.title('A gpx path')
+    plt.title('A GPX path')
     plt.show()
 
