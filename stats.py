@@ -1,5 +1,5 @@
-# poly_tools.py
-# Tools for analyzing polygons
+# stats.py
+# Functions for calculating statistics of paths and polygons
 # Brendan Hasz
 # winsto99@gmail.com
 # April 2014
@@ -42,3 +42,18 @@ def perimeter(points):
     s += pythag(points[-1], points[0]) #add the last segment
     return s
 
+
+def length(points):
+    '''
+    Finds the length of a path
+    '''
+    def pythag(a, b):
+        '''
+        Calculates the distance between 2 points using the 
+        pythagorean theorem
+        '''
+        return sqrt(pow(abs(a[0]-b[0]),2)+pow(abs(a[1]-b[1]),2))
+    s = 0.0
+    for i in range(1, len(points)):
+        s += pythag(points[i-1], points[i])
+    return s
