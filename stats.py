@@ -4,6 +4,10 @@
 # winsto99@gmail.com
 # April 2014
 
+# TODO: have to convert lat + long to miles: 
+#           one deg of lat = 69.1 mi
+#           one deg of long = 53 mi
+
 from math import sqrt
 
 def area(points):
