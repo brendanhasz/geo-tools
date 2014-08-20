@@ -16,6 +16,7 @@ def area(points):
     Input is a list of points (which are lists of x,y coords)
     Returns the area of the polygon
     '''
+    #TODO: CONVERT TO MILES (OR SOMETHING?)
     def integrate(a, b):
         '''
         Integrates the line segement connecting p1 and p2
@@ -25,7 +26,10 @@ def area(points):
     for i in range(1, len(points)):
         s += integrate(points[i-1], points[i])
     s += integrate(points[-1], points[0]) #add the last segment
-    return s
+    if s < 0:
+        return area([points[-i] for i in range(1,len(points))])
+    else:
+        return s
 
 
 def perimeter(points):
